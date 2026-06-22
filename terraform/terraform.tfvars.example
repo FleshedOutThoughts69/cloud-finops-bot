@@ -1,0 +1,93 @@
+# ──────────────────────────────────────────────────────────────
+# FinOps Bot - Terraform Variables
+# Copy this file to terraform.tfvars and replace ALL placeholders
+# ──────────────────────────────────────────────────────────────
+
+# ──────────────────────────────────────────────────────────────
+# General Configuration
+# ──────────────────────────────────────────────────────────────
+
+aws_region = "us-east-1"                     # Your AWS region (e.g., us-east-1, us-west-2)
+environment = "dev"                          # Environment name: dev, staging, or prod
+
+# ──────────────────────────────────────────────────────────────
+# Bot Behavior (Safety First!)
+# ──────────────────────────────────────────────────────────────
+
+dry_run = true                               # ⚠️ KEEP TRUE INITIALLY! Set to false only after testing.
+cost_per_gb = 0.08                           # Cost per GB-month for EBS volumes (gp3 pricing)
+
+# Comma-separated list of resource IDs to exclude (emergency kill-switch)
+excluded_ids = ""
+
+# Comma-separated list of AWS regions to scan
+regions = "us-east-1,us-west-2,eu-west-1"
+
+# ──────────────────────────────────────────────────────────────
+# Cleanup Rules
+# ──────────────────────────────────────────────────────────────
+
+quarantine_days = 7                          # Days to quarantine before deletion
+snapshot_retention_days = 30                 # Days to retain snapshots
+snapshots_to_keep = 3                        # Number of recent snapshots to keep per volume
+rds_stop_age_days = 7                        # Minimum age for RDS instances to be stopped
+
+# ──────────────────────────────────────────────────────────────
+# Logging
+# ──────────────────────────────────────────────────────────────
+
+log_level = "info"                           # Options: debug, info, warn, error
+
+# ──────────────────────────────────────────────────────────────
+# Slack Notifications
+# ──────────────────────────────────────────────────────────────
+
+slack_channel = "#finops-alerts"             # Slack channel (optional; leave empty if not using)
+
+# ──────────────────────────────────────────────────────────────
+# AWS Resources - REPLACE THESE VALUES
+# ──────────────────────────────────────────────────────────────
+
+# S3 bucket for audit reports and dashboard
+# Must be globally unique; includes environment and account ID
+s3_report_bucket = "finops-audit-dev-123456789012"   # <-- REPLACE with your bucket name
+
+# ARN of the Secrets Manager secret containing SLACK_WEBHOOK_URL
+secrets_manager_arn = "arn:aws:secretsmanager:us-east-1:123456789012:secret:finops/slack-webhook-abc123"  # <-- REPLACE with your secret ARN
+
+# ARN of the SNS topic for alerts (optional; leave empty to have Terraform create one)
+sns_topic_arn = ""                           # <-- Optional
+
+# ──────────────────────────────────────────────────────────────
+# Feature Flags
+# ──────────────────────────────────────────────────────────────
+
+enable_rds_savings = true                    # Enable RDS savings calculations and stopping
+
+# ──────────────────────────────────────────────────────────────
+# Lambda Configuration
+# ──────────────────────────────────────────────────────────────
+
+lambda_memory_size = 256                     # Memory in MB (options: 128, 256, 512, ...)
+lambda_timeout = 300                         # Timeout in seconds (max 900)
+
+# ──────────────────────────────────────────────────────────────
+# Timezone for Logging
+# ──────────────────────────────────────────────────────────────
+
+timezone = "America/New_York"                # IANA timezone (e.g., UTC, America/New_York)
+
+# ──────────────────────────────────────────────────────────────
+# Health Check
+# ──────────────────────────────────────────────────────────────
+
+health_check_interval = 5                    # How often the health check runs (minutes)
+
+# ──────────────────────────────────────────────────────────────
+# Feature Toggles (set to "true" or "false" as strings)
+# ──────────────────────────────────────────────────────────────
+
+enable_ec2_discovery = "false"               # EC2 discovery (disabled by default due to Floci issues)
+enable_slack         = "true"                # Slack notifications
+enable_s3            = "true"                # S3 audit report upload
+enable_dashboard     = "true"                # Dashboard generation and upload

@@ -1,0 +1,32 @@
+# docker-compose.yml
+
+version: '3.8'
+
+services:
+  floci:
+    image: ghcr.io/floci-io/floci:latest
+    container_name: floci-finops
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=ec2,rds,dynamodb,s3,secretsmanager,ssm,sqs,cloudwatch
+      - DEBUG=1
+      - DATA_DIR=/var/lib/floci
+    volumes:
+      - floci_data:/var/lib/floci
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4566/_localstack/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - finops-network
+
+volumes:
+  floci_data:
+    driver: local
+
+networks:
+  finops-network:
+    driver: bridge

@@ -1,0 +1,66 @@
+# Binaries
+bootstrap
+health_bootstrap
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary
+*.test
+
+# Output of go coverage
+*.out
+coverage.html
+coverage.out
+
+# Dependency directories
+vendor/
+
+# Go workspace file
+go.work
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Terraform
+terraform/.terraform
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
+terraform/*.tfplan
+terraform/tfplan
+terraform/terraform.tfvars
+
+# Lambda artifacts
+function.zip
+health.zip
+lambda.zip
+output.json
+
+# Dashboard
+dashboard.html
+
+# Logs
+*.log
+logs/
+
+# Build artifacts
+tmp/
+dist/
+
+# Pre-commit
+.git/hooks/pre-commit
