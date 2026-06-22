@@ -6,11 +6,9 @@
 [![AWS SDK](https://img.shields.io/badge/AWS_SDK-v2-FF9900?style=for-the-badge&logo=amazon-aws&logoColor=white)](https://aws.amazon.com/sdk-for-go/)
 [![Floci](https://img.shields.io/badge/Floci-AWS_Emulator-5C2D91?style=for-the-badge)](https://floci.io/aws/)
 [![Terraform](https://img.shields.io/badge/Terraform-v1.5+-623CE4?style=for-the-badge&logo=terraform&logoColor=white)](https://www.terraform.io/)
-[![Project Status](https://img.shields.io/badge/Status-Production_Ready-brightgreen?style=for-the-badge)]()
+[![Project Status](https://img.shields.io/badge/Status-Production_Testing-brightgreen?style=for-the-badge)]()
 
-[![FlowCI Build Status](https://flowci.io/badge/your-project-name/main)](https://flowci.io/projects/your-project-name)
-[![Coverage](https://flowci.io/badge/coverage/your-project-name/main)](https://flowci.io/projects/your-project-name)
-[![Security](https://flowci.io/badge/security/your-project-name/main)](https://flowci.io/projects/your-project-name)
+
 
 ---
 
