@@ -682,7 +682,7 @@ The Lambda will fetch the new value on the next invocation.
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+TBD
 
 ---
 
