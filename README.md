@@ -206,9 +206,15 @@ graph TD
 | **SQS** | < $0.01 | 1-10 messages/month |
 | **Secrets Manager** | < $0.50 | 1 secret, 30-day recovery |
 | **KMS** | < $0.10 | Key rotation, decryption |
-| **CloudWatch** | < $0.50 | Logs, metrics, alarms |
+| **CloudWatch** | < $0.50 | Logs (30-day retention), metrics, alarms |
 | **SNS** | < $0.10 | 1-10 notifications/month |
 | **Total** | **< $1.50/month** | |
+
+**Notes:**
+- All estimates are based on **us-east-1** pricing as of June 2026.
+- CloudWatch cost assumes **30-day log retention**.
+- Data transfer costs are negligible for this usage pattern (< 1 GB/month).
+- Costs may vary slightly by region.
 
 **Savings Potential:** The bot typically identifies **$50-$500/month** in savings, making it **cost-negative** (saves more than it costs).
 
